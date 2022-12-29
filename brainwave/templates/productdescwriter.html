@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+{% block title %}
+Product Ads Generator
+
+{% endblock title %}
+{% block body %}
+{% include "nav.html" %}
+{% block style %}
+<style>
+  /* For mobile phones: */
+[class*="col-"] {
+  width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+}
+  .form-control {
+    overflow-y: scroll;
+    color: black;
+    font-family: 'AdorshoLipi', sans-serif;
+    font-size: large;
+    animation: 
+    typing 3.5s steps(40, end),
+    blink-caret .75s step-end infinite;
+  }
+    
+  
+</style>
+{% endblock style %}
+<div class="container text-center">
+  <div class="row align-items-start">
+
+      
+    <div class="col-sm-6">
+
+        <form method="POST" action="" id="contactForm">{% csrf_token %}
+        
+        
+          <!-- Email address input -->
+          <div class="py-7">
+         
+   <h2>Product Ads Generator</h2>
+            <label class="form-label" for="emailAddress">Product Name
+            </label>
+            <input class="form-control" name="name" id="name" placeholder="Topic" data-sb-validations="required, email" />
+            <div class="invalid-feedback" data-sb-feedback="emailAddress:required">Keyword is required.</div>
+            <div class="invalid-feedback" data-sb-feedback="emailAddress:email">Keyword is not valid.</div>
+          
+          <label class="form-label" for="emailAddress">Category
+          </label>
+          <input class="form-control" name="category" id="category" placeholder="Category" data-sb-validations="required, email" />
+          <div class="invalid-feedback" data-sb-feedback="emailAddress:required">Keyword is required.</div>
+          <div class="invalid-feedback" data-sb-feedback="emailAddress:email">Keyword is not valid.</div>
+        
+          <label class="form-label" for="emailAddress">Features</label>
+          <input class="form-control" name="keyword" id="keyword" placeholder="Keyword" rows=""22 data-sb-validations="required, email" />
+          <div class="invalid-feedback" data-sb-feedback="emailAddress:required">Keyword is required.</div>
+          <div class="invalid-feedback" data-sb-feedback="emailAddress:email">Keyword is not valid.</div>
+     
+       <div class="mb-2">
+        
+       </div>
+       <label>Select Output Language</label>
+          <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="lang" id="lang"  data-sb-validations="required">
+         
+            <option value="en">English</option>
+            <option value="bn">Bengali</option>
+            
+           
+          </select>
+          <!-- Message input -->
+          <label>Tone Of Voice</label>
+          <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="tone" id="tone"  data-sb-validations="required">
+            <option value="Professional" selected>Professional</option>
+            <option value="Joyful">Joyful</option>
+            <option value="Sad">Sad</option>
+            <option value="Funny">Funny</option>
+            
+           
+          </select>
+         
+        
+       <div class="mb-4">
+        
+       </div>
+          <!-- Form submit button -->
+          <div class="d-grid">
+            <button class="btn btn-primary btn-lg" type="submit">Generate</button>
+          </div>
+        </form>
+        <small>*If you are using mobile then scroll down to see the output.*</small>
+      </div>
+    
+  
+    </div>
+    <div class="col-sm-6">
+    <!-- Message input -->
+   
+      <div class="py-7">
+        <label>Output</label>
+        <textarea class="form-control" name="message" id="message" type="text"  id="demo" onclick="typeWriter()" placeholder="Hello {{user.username}}, Here is your Output." style="height: 31rem;" data-sb-validations="required" rows="90">{{ans}}</textarea>
+    
+        <div class="invalid-feedback" data-sb-feedback="message:required">{{ans}}</div>
+      
+       
+      </div>
+      
+    </div>
+  
+  </div>
+
+        <!-- Bootstrap 5 starter form -->
+
+
+     </div>
+  
+      <!-- Form submissions success message -->
+    
+   
+
+
+
+  <script type="text/javascript">
+    var i = 0;
+var txt = '{{ans}}';
+var speed = 50;
+
+function typeWriter() {
+  if (i < txt.length) {
+    document.getElementById("demo").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
+<
+    </script>
+{% endblock body %}
